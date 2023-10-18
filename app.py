@@ -12,6 +12,7 @@ similarity_score = pd.read_pickle(open('similarity_score', 'rb'))
 app = Flask(__name__)
 
 
+# home page which shows the top 50 books(route for home page)
 @app.route('/')
 def index():
     return render_template('index.html',
@@ -23,11 +24,13 @@ def index():
                           )
 
 
+# function to load recommendation ui
 @app.route('/recommend')
 def recommend_ui():
     return render_template('recommend.html')
 
 
+# function to recommed bobks on users recommendation 
 @app.route('/recommend_books', methods=['post'])
 def recommend():
     user_input = request.form.get('user_input')
